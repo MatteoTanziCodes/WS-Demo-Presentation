@@ -17,7 +17,7 @@
     <ul class="nav-links">
       <li><a href="#problem">Problem</a></li>
       <li><a href="#system">The System</a></li>
-      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#architecture">Agentic DevOps</a></li>
       <li><a href="#scale">At Scale</a></li>
       <li><a href="#human">Human Role</a></li>
     </ul>
@@ -27,13 +27,10 @@
   <aside id="sidebar" class="sidebar hidden">
     <ul class="sidebar-nav">
       <li><a href="#problem" class="sidebar-link active">The delivery bottleneck</a></li>
-      <li><a href="#summit" class="sidebar-link">The False Summit</a></li>
       <li><a href="#system" class="sidebar-link">What is a background agent</a></li>
-      ...
-      <li><a href="#step1" class="sidebar-link">Agentic DevOps primitives</a></li>
-      <li><a href="#step2" class="sidebar-link">Find the real bottleneck</a></li>
-      <li><a href="#step3" class="sidebar-link">Scale the delivery factory</a></li>
-      <li><a href="#human" class="sidebar-link">Human boundary</a></li>
+      <li><a href="#step1" class="sidebar-link">DevOps primitives for agents</a></li>
+      <li><a href="#step2" class="sidebar-link">What fails in prod</a></li>
+      <li><a href="#step3" class="sidebar-link">The unattended loop</a></li>
     </ul>
   </aside>
 
@@ -60,34 +57,33 @@
 
     <!-- SECTION 1: PROBLEM -->
     <section id="problem" class="content-section">
-      <div class="section-label reveal">THE SELF-DRIVING COMPLIANCE LAYER</div>
+      <div class="section-label reveal">THE SELF-DRIVING DELIVERY LAYER</div>
       <h2 class="section-title reveal">
-        Background agents work across<br>the entire compliance lifecycle.
+        Background agents work across<br>the entire delivery lifecycle.
       </h2>
       <p class="section-body reveal">
-        Compliance review was designed around constraints of humans reading documents.
-        Now, agents can run autonomously across thousands of submissions in the background.
-        This trend is already in motion. Our old processes can't absorb these changes anymore.
-        Now, every compliance leader is asking the same question:
-        <strong>how do we get from today's manual review process to a self-driving compliance layer?</strong>
+        AI didn’t just speed up coding — it changed the operating pressure on the whole system.
+        When agents can generate plans, code, and PRs at machine speed, the bottleneck shifts to
+        what protects the business: <strong>verification, governance, and uptime</strong>.
+        The question isn’t “can agents ship?” — it’s:
+        <strong>how do we keep velocity without sacrificing quality, compliance, or reliability?</strong>
       </p>
 
-      <!-- Interactive SDLC dot pipeline -->
       <div class="pipeline-viz reveal" id="pipelineViz">
         <div class="pipeline-labels">
-          <span class="pl" data-stage="0">INTAKE</span>
-          <span class="pl" data-stage="1">PARSE</span>
-          <span class="pl active" data-stage="2">REVIEW</span>
-          <span class="pl" data-stage="3">FLAG</span>
-          <span class="pl" data-stage="4">APPROVE</span>
+          <span class="pl" data-stage="0">PRD</span>
+          <span class="pl" data-stage="1">PLAN</span>
+          <span class="pl active" data-stage="2">VERIFY</span>
+          <span class="pl" data-stage="3">FIX</span>
+          <span class="pl" data-stage="4">MERGE</span>
         </div>
         <canvas id="pipelineCanvas"></canvas>
       </div>
 
       <p class="section-body reveal">
-        Submissions pile up at Review — not because analysts are slow,
-        but because <strong>review was never designed to be parallelized.</strong>
-        PASS changes that constraint entirely.
+        Work piles up at Verify — not because engineers are slow,
+        but because <strong>verification was never designed to be parallelized.</strong>
+        PASS reimagines DevOps for agents: shift-left, enforced guardrails, and traceability.
       </p>
     </section>
 
@@ -98,15 +94,15 @@
         Individual speed ≠ organizational velocity.
       </h2>
       <p class="section-body reveal">
-        You rolled out AI copilots for analysts. They read faster. PRs of approvals flood in.
+        You rolled out AI copilots for developers. They code faster. PRs flood in.
       </p>
       <p class="section-body reveal" style="margin-top: 16px;">
-        Yet, queue time doesn't budge. SLAs are flat. The backlog grows.
+        Yet cycle time doesn’t improve. Review queues grow. Incidents creep up. Tech debt compounds.
       </p>
       <p class="section-body reveal" style="margin-top: 16px;">
-        Because gains are compounding with the individual, not the organization.
-        The longer you invest in AI-assisted reading without addressing the system around it,
-        the deeper you entrench. <strong>This is the false summit.</strong>
+        Because gains compound with the individual, not the organization.
+        If you accelerate code creation without redesigning verification + governance,
+        you entrench the bottleneck. <strong>This is the false summit.</strong>
       </p>
 
       <!-- Scroll-driven roadmap (mirrors the steps diagram) -->
@@ -139,21 +135,22 @@
         <span class="icon-cluster">⬡ ✳ ✦ ○</span>
       </h2>
       <p class="section-body reveal">
-        A copilot needs your analyst's attention. A background agent needs neither.
-        It runs in its own execution environment in the cloud: full document toolchain,
-        policy retrieval suite, everything. Completely decoupled from your team's attention.
+        A copilot needs a developer’s attention. A background agent doesn’t.
+        It runs in a cloud execution environment with tools: repo access, test runners,
+        linters, security scanners, deployment hooks, and observability.
+        It completes work asynchronously and produces structured outputs you can review.
       </p>
       <p class="section-body reveal" style="margin-top: 20px;">
-        Trigger it from a Slack message, a form submission, a webhook, a scheduled job.
-        Walk away. Review the structured output when it's done.
-        It's an asynchronous task: <strong>delegate, walk away, decide later.</strong>
+        Trigger it from Slack, a PRD submission, a webhook, or a scheduled job.
+        Walk away. Come back to artifacts, PRs, and a decision point.
+        <strong>Delegate, walk away, decide later.</strong>
       </p>
 
       <table class="compare-table reveal">
         <thead>
           <tr>
             <th></th>
-            <th>Copilot analyst</th>
+            <th>Copilot developer</th>
             <th class="th-accent">PASS (Background Agent)</th>
           </tr>
         </thead>
@@ -174,9 +171,9 @@
             <td>Across entire queue, concurrently</td>
           </tr>
           <tr>
-            <td class="td-label">Analyst role</td>
-            <td>In the loop — reading, routing, writing</td>
-            <td>On the loop — prompt, walk away, decide output</td>
+            <td class="td-label">Developer role</td>
+            <td>In the loop — typing, patching, context-switching</td>
+            <td>On the loop — review outputs, approve high-impact actions</td>
           </tr>
         </tbody>
       </table>
@@ -189,13 +186,13 @@
       <div id="step1" class="step-block">
         <div class="step-header reveal">
           <div class="step-number">01</div>
-          <div class="step-name">Establish background agent primitives</div>
+          <div class="step-name">Establish DevOps primitives for agents</div>
         </div>
         <p class="section-body reveal">
-          Autonomous agents need infrastructure that doesn't exist in a shared drive.
-          The building blocks below are what separate a demo from a deployment —
-          structured document ingestion, policy retrieval, sandboxed execution, audit trail generation.
-          Each one unlocks the next.
+          Unattended agents need more than a prompt.
+          They need standards that make autonomy safe: sandboxed execution, integration context,
+          requirements checks, cost caps, and an audit trail.
+          These primitives are what separate a demo from production.
         </p>
 
         <div class="two-col reveal">
@@ -203,26 +200,26 @@
             <div class="section-label" style="margin-bottom:12px">PATTERN 1</div>
             <h3 class="pattern-title"><em>Agent has full document environment</em></h3>
             <p class="pattern-body">
-              The agent has a full document processing environment. A container running
-              with the policy corpus, test cases, regulatory databases, and internal API access.
-              This is the closest to how a human analyst works.
-              Every enterprise compliance agent worth deploying chose this pattern.
+              The agent runs in a sandbox with repo access and the same toolchain a human relies on:
+              typecheck, lint, tests, security scanning, and CI parity. This is how you let an agent work
+              without turning your codebase into a scratchpad.
             </p>
             <div class="pattern-diagram">
               <div class="pd-box main">
                 <div class="pd-label">CONTAINER</div>
                 <div class="pd-items">
                   <span>• Agent</span>
-                  <span>• Policy corpus</span>
+                  <span>• Repo workspace</span>
                   <span>• Test suite</span>
-                  <span>• Internal APIs</span>
+                  <span>• Lint + typecheck</span>
+                  <span>• Security scans</span>
                 </div>
               </div>
               <div class="pd-box side">
                 <div class="pd-items">
-                  <span>• Databases</span>
-                  <span>• Reg feeds</span>
-                  <span>• Secrets</span>
+                  <span>• Secrets (scoped)</span>
+                  <span>• Deploy hooks</span>
+                  <span>• Observability</span>
                 </div>
               </div>
             </div>
@@ -238,6 +235,14 @@
               is actual governance.
             </p>
             <div class="placeholder-box">[ Add governance diagram ]</div>
+            <!-- <div class="placeholder-box">
+              Guardrails (examples)<br>
+              • Block credential / .env edits<br>
+              • Block dangerous commands (rm -rf, DROP TABLE, etc.)<br>
+              • Enforce lint + typecheck + tests before commit<br>
+              • Require security scan on new files<br>
+              • Log every tool action + file touched (audit trail)
+            </div> -->
           </div>
         </div>
       </div>
@@ -246,29 +251,30 @@
       <div id="step2" class="step-block" style="margin-top: 80px;">
         <div class="step-header reveal">
           <div class="step-number">02</div>
-          <div class="step-name">Find your system bottlenecks</div>
+          <div class="step-name">What fails first in production</div>
         </div>
         <p class="section-body reveal">
-          The primitives give you the capability. Where you apply them is what matters.
-          That means doing the work: surveying your analysts, sitting with your teams,
-          mapping where time goes. Every organization's bottlenecks are different.
-          The ones worth solving first aren't always obvious.
+          The problem isn’t agent velocity — it’s missing guardrails.
+          When code changes arrive at machine speed, the system breaks where quality is enforced:
+          verification, secrets handling, architectural boundaries, and observability.
+          Agentic DevOps exists to protect uptime while keeping velocity.
         </p>
 
         <div class="callout reveal">
-          <h4 class="callout-title">Submissions that pile up faster than any analyst can clear</h4>
+          <h4 class="callout-title">Verification queues that stall shipping</h4>
           <p class="callout-body">
-            Standard product submissions sit in queue while analysts context-switch.
-            PASS reviews every submission before a human sees it, so analysts focus
-            on judgment calls — not on reading whether required fields are populated.
+            PRs pile up in CI and review. PASS shifts verification left:
+            agents run lint/typecheck/tests/security checks before a human spends attention.
+            Humans focus on judgment, not on re-running the same pipeline failures.
           </p>
         </div>
 
         <div class="callout reveal" style="margin-top: 20px;">
-          <h4 class="callout-title">[ Your second bottleneck here ]</h4>
+          <h4 class="callout-title">Credential and integration drift</h4>
           <p class="callout-body">
-            Describe another specific compliance workflow PASS addresses —
-            exception flagging, policy change propagation, audit documentation, regulatory response.
+            Unattended systems fail when they lack the tools they need. PASS makes requirements explicit:
+            missing tokens, missing permissions, or missing integration context becomes a visible artifact.
+            No silent failures. No “it worked on my machine.”
           </p>
         </div>
       </div>
@@ -277,30 +283,31 @@
       <div id="step3" class="step-block" style="margin-top: 80px;">
         <div class="step-header reveal">
           <div class="step-number">03</div>
-          <div class="step-name">Scale your compliance factory</div>
+          <div class="step-name">Scale your delivery factory</div>
         </div>
         <p class="section-body reveal">
-          The compliance organization is an industrial system. Today, analysts stand at every station:
-          reading, routing, flagging, writing. Background agents change the operating model.
-          The factory runs, but your analysts move <em>on</em> the loop instead of <em>in</em> it.
+          Agentic DevOps turns delivery into a factory.
+          Instead of humans standing at every station, agents do the repetitive execution work
+          and hand humans a decision point. We use PRD → plan → issues as the concrete demo —
+          but the reimagined workflow is the control layer that keeps velocity safe.
         </p>
 
         <!-- Interactive flow diagram -->
         <div class="flow-diagram reveal" id="flowDiagram">
           <div class="flow-stage" data-stage="intake">
-            <div class="flow-stage-label">INTAKE</div>
+            <div class="flow-stage-label">PRD INTAKE</div>
             <div class="flow-dots-wrap">
               <div class="fd grey"></div><div class="fd grey"></div><div class="fd grey"></div>
             </div>
           </div>
           <div class="flow-stage" data-stage="parse">
-            <div class="flow-stage-label">PARSE</div>
+            <div class="flow-stage-label">PLAN</div>
             <div class="flow-dots-wrap">
               <div class="fd red"></div><div class="fd red"></div><div class="fd grey"></div>
             </div>
           </div>
           <div class="flow-stage" data-stage="review">
-            <div class="flow-stage-label">AI REVIEW</div>
+            <div class="flow-stage-label">AGENT BUILD</div>
             <div class="flow-dots-wrap">
               <div class="fd red"></div><div class="fd red"></div><div class="fd red"></div>
               <div class="fd red"></div><div class="fd red"></div><div class="fd red"></div>
@@ -313,7 +320,7 @@
             </div>
           </div>
           <div class="flow-stage" data-stage="approve">
-            <div class="flow-stage-label">APPROVE</div>
+            <div class="flow-stage-label">MERGE / SYNC</div>
             <div class="flow-dots-wrap">
               <div class="fd green"></div><div class="fd green"></div>
             </div>
@@ -321,11 +328,11 @@
         </div>
 
         <ul class="check-list reveal">
-          <li>Every submission is reviewed by PASS before a human sees it</li>
-          <li>Policy citations are generated automatically — analysts don't look them up</li>
-          <li>Exception flags surface immediately, not after full document read</li>
-          <li>Audit trail is written by the agent, verified by the analyst</li>
-          <li>[ Add your 5th outcome — your specific metric or result ]</li>
+          <li>Every PRD becomes a persisted architecture pack (reviewable artifact)</li>
+          <li>Work is decomposed into issue-sized tasks with dependencies</li>
+          <li>Agents pre-verify changes (lint/typecheck/tests/security) before human review time</li>
+          <li>Audit trail logs what the agent did, what it touched, and why actions were allowed</li>
+          <li>Cost caps + observability prevent runaway execution and make failures diagnosable</li>
         </ul>
       </div>
     </section>
@@ -333,19 +340,19 @@
     <!-- DARK SECTION -->
     <section id="scale" class="content-section section-dark">
       <div class="content-section-inner">
-        <div class="section-label reveal" style="color: #c0392b;">TOWARDS A SELF-DRIVING COMPLIANCE LAYER</div>
+        <div class="section-label reveal" style="color: #c0392b;">TOWARDS A SELF-DRIVING DELIVERY LAYER</div>
         <blockquote class="dark-quote reveal">
-          Your analysts aren't in the queue.<br>
-          They're <em>on</em> the queue.
+          Your engineers aren’t in the queue.<br>
+          They’re <em>on</em> the queue.
         </blockquote>
         <p class="section-body reveal" style="color: #8a8480; margin-top: 32px;">
-          The intake pipeline runs. Submissions are being parsed, reviewed, flagged —
-          continuously, autonomously. Analysts are observing. Setting thresholds.
-          Verifying outcomes. Making the calls only they can make.
+          The factory runs unattended: plan → verify → propose.
+          Humans observe, set thresholds, and approve the actions that carry accountability.
+          The goal is simple: <strong style="color:#e8e4de;">protect uptime without reducing organizational velocity.</strong>
         </p>
         <p class="section-body reveal" style="color: #8a8480; margin-top: 20px;">
-          <strong style="color: #e8e4de;">[ Add your scale metrics ]</strong> —
-          projected throughput increase, SLA reduction, analyst hours saved per week.
+          What we measure: lead time (PRD→issues/PR), verification pass rate, retry loops, token spend per run,
+          and time-to-diagnosis when something fails.
         </p>
         <div class="placeholder-box dark reveal" style="margin-top: 48px; height: 320px;">
           [ Demo screenshot or system diagram ]
@@ -360,31 +367,33 @@
         One decision must<br>remain human — and why.
       </h2>
       <p class="section-body reveal">
-        PASS takes on real cognitive responsibility: parsing, retrieval, initial analysis,
-        exception flagging, audit documentation. But the architecture is explicit about
-        where AI authority terminates.
+        PASS takes on real cognitive and operational responsibility: turning intent into a plan,
+        generating structured artifacts, running verification, and staging work as issues or PRs.
+        But the architecture is explicit about where AI authority terminates.
       </p>
 
       <div class="human-decision reveal">
         <div class="human-decision-label">Critical Human Decision</div>
-        <h3 class="human-decision-title">Final regulatory approval on novel product types</h3>
-        <p class="human-decision-body">
-          PASS can review a submission against known policy. It cannot determine whether
-          a genuinely novel financial product is <em>appropriate</em> for Wealthsimple's
-          regulatory posture, client base, and risk appetite. That judgment requires
-          institutional knowledge, stakeholder accountability, and regulatory relationship context
-          that no agent should hold. The analyst signs. The agent doesn't.
-        </p>
-        <p class="human-decision-note">
-          [ Customize with your specific human decision boundary ]
-        </p>
-      </div>
+        <h3 class="human-decision-title">Approve syncing the backlog to the repo</h3>
 
-      <p class="section-body reveal" style="margin-top: 40px;">
-        <strong>What would break first at scale:</strong> policy drift — when the policy corpus
-        gets out of sync with live regulatory updates. PASS is only as good as its retrieval layer.
-        That maintenance responsibility is explicitly human.
-      </p>
+        <p class="human-decision-body">
+          PASS can generate an architecture pack and decompose it into issue-sized work.
+          But before it writes anything into the system of record (GitHub issues), a human must approve the backlog.
+          <br><br>
+          This decision stays human because the cost of being wrong is real: noisy or mis-scoped tickets waste engineering cycles,
+          create coordination debt, and can accidentally capture sensitive requirements in the wrong place.
+          The agent can propose. The human owns the accountability.
+        </p>
+
+        <p class="human-decision-note">
+          Stop-line: the system may draft and stage work, but <strong>issue sync requires explicit approval</strong>.
+        </p>
+
+        <p class="section-body reveal" style="margin-top: 22px;">
+          At scale, what breaks first isn’t generation — it’s governance: bad decompositions flooding repos, missing context,
+          and no visibility into why the agent produced a task. PASS treats approval + traceability as first-class
+          so velocity doesn’t turn into backlog chaos.
+        </p>
 
       <div class="placeholder-box reveal" style="margin-top: 48px; height: 280px;">
         [ Add demo screenshot or video thumbnail here ]
