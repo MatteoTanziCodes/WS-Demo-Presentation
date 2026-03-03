@@ -266,6 +266,22 @@ nav.scrolled {
   padding: 100px 48px;
 }
 
+/* Let image placeholders size to their content */
+.placeholder-box.has-image {
+  height: auto;          /* overrides the fixed placeholder height */
+  display: block;        /* remove flex centering behavior for media */
+  padding: 0;
+}
+
+/* Make the image fully visible (no cropping) */
+.placeholder-img {
+  width: 100%;
+  height: auto;          /* critical: no forced height */
+  display: block;
+  object-fit: contain;   /* ensures no cropping */
+  border-radius: 4px;
+}
+
 /* ---- TYPOGRAPHY ---- */
 .section-label {
   font-family: var(--mono);
