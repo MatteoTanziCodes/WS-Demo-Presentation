@@ -1,0 +1,17 @@
+dangerous_commands:
+  - rm -rf
+  - DROP TABLE
+  - format c:
+blocked_sensitive_paths:
+  - .env
+  - .env.*
+  - "*.pem"
+  - "*.key"
+  - data/integrations/secrets/**
+  - data/project-secrets/**
+required_commands:
+  lint: 
+  typecheck: 
+  test_changed: 
+  test_critical: 
+  coverage_extract: 
