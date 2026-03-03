@@ -1,0 +1,72 @@
+{
+  "generated_at": "2026-03-03T04:09:46.281Z",
+  "issue_id": "base_003_author_mdx_json_007_create_json_section_mani",
+  "issue_number": 7,
+  "title": "Create JSON section manifest and ordering schema",
+  "summary": "Author /content/sections.json defining the ordered list of all presentation sections (AI architecture evolution, agentic systems, live demos, enterprise differentiators). Each entry includes id, order, label, scrollAnchorId, and isMockScaffold flag. This file drives build-time section discovery and ordering.",
+  "acceptance_criteria": [
+    "sections.json exists at /content/sections.json",
+    "Each entry contains id, order, label, scrollAnchorId, isMockScaffold fields",
+    "Sections cover: AI architecture evolution, agentic systems, live demos, audit traceability, cost management, agentic DevOps uptime",
+    "Entries are ordered sequentially by the order field with no gaps"
+  ],
+  "dependencies": [],
+  "related_components": [
+    "pass-content"
+  ],
+  "related_requirements": [
+    {
+      "id": "req_1",
+      "text": "All slide content sourced from local JSON/MDX at build time with zero server-side runtime."
+    },
+    {
+      "id": "req_2",
+      "text": "The build pipeline reads all slide data from /content at build time and bakes it into the static bundle."
+    },
+    {
+      "id": "req_3",
+      "text": "A client-side state machine manages the current slide index, updates the URL hash, and responds to keyboard arrow key events."
+    },
+    {
+      "id": "req_4",
+      "text": "Demo slide video elements auto-load from /public; the presenter can play, pause, and resume without leaving the slide."
+    },
+    {
+      "id": "req_5",
+      "text": "Vercel project is configured with build command `next build && next export` and output directory `out`; the generated Vercel URL must be publicly accessible."
+    },
+    {
+      "id": "req_6",
+      "text": "The Next.js project must be bootstrapped and maintained in TypeScript with strict mode enabled."
+    },
+    {
+      "id": "req_7",
+      "text": "Sections must include: personal intro, AI overview (neural net → AI building → unattended agentic AI), prod-ready agent architecture, legacy vs reimagined workflow demo, maintenance/cost/audit considerations, Stripe Minions and Ramp examples, and agentic DevOps differentiator with uptime metric."
+    },
+    {
+      "id": "req_8",
+      "text": "Typing or sharing a hash URL (e.g. #qa) must navigate the client-side state machine to the target slide without reloading the page."
+    },
+    {
+      "id": "req_9",
+      "text": "A pre-build or CI check measures total size of /public and aborts the build with a clear error if the limit is exceeded."
+    },
+    {
+      "id": "req_10",
+      "text": "Each slide fills the full viewport; no vertical or horizontal scrollbars appear during a standard presentation session."
+    }
+  ],
+  "related_integrations": [
+    "Vercel CDN Edge",
+    "Next.js Static Export",
+    "MDX Compiler (next-mdx-remote / @next/mdx)",
+    "CI Asset Size Check",
+    "Browser Hash Router"
+  ],
+  "relevant_design_guidance": [],
+  "repo_command_config": {},
+  "repo_execution_notes": [
+    "Repository was provisioned by WSPass.",
+    "Primary component focus: pass-content."
+  ]
+}
