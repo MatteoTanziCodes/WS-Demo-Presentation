@@ -1,0 +1,64 @@
+{
+  "generated_at": "2026-03-03T04:36:59.000Z",
+  "issue_id": "base_009_configure_verce_025_create_vercel_project_an",
+  "issue_number": 25,
+  "title": "Create Vercel project and connect GitHub repo",
+  "summary": "Create a new Vercel project via the dashboard or CLI, link it to the GitHub repository, and confirm the repo connection is active so pushes are detected.",
+  "acceptance_criteria": [
+    "Vercel project exists and is linked to the correct GitHub repo",
+    "Vercel dashboard shows repo connection status as active",
+    "Project name follows naming convention (e.g. pass-web)"
+  ],
+  "dependencies": [],
+  "related_components": [
+    "pass-vercel-cdn"
+  ],
+  "related_requirements": [
+    {
+      "id": "req_2",
+      "text": "The build pipeline reads all slide data from /content at build time and bakes it into the static bundle."
+    },
+    {
+      "id": "req_3",
+      "text": "A client-side state machine manages the current slide index, updates the URL hash, and responds to keyboard arrow key events."
+    },
+    {
+      "id": "req_4",
+      "text": "Demo slide video elements auto-load from /public; the presenter can play, pause, and resume without leaving the slide."
+    },
+    {
+      "id": "req_5",
+      "text": "Vercel project is configured with build command `next build && next export` and output directory `out`; the generated Vercel URL must be publicly accessible."
+    },
+    {
+      "id": "req_6",
+      "text": "The Next.js project must be bootstrapped and maintained in TypeScript with strict mode enabled."
+    },
+    {
+      "id": "req_7",
+      "text": "Sections must include: personal intro, AI overview (neural net → AI building → unattended agentic AI), prod-ready agent architecture, legacy vs reimagined workflow demo, maintenance/cost/audit considerations, Stripe Minions and Ramp examples, and agentic DevOps differentiator with uptime metric."
+    },
+    {
+      "id": "req_8",
+      "text": "Typing or sharing a hash URL (e.g. #qa) must navigate the client-side state machine to the target slide without reloading the page."
+    },
+    {
+      "id": "req_9",
+      "text": "A pre-build or CI check measures total size of /public and aborts the build with a clear error if the limit is exceeded."
+    },
+    {
+      "id": "req_10",
+      "text": "Each slide fills the full viewport; no vertical or horizontal scrollbars appear during a standard presentation session."
+    }
+  ],
+  "related_integrations": [
+    "Vercel CDN Edge",
+    "Next.js Static Export"
+  ],
+  "relevant_design_guidance": [],
+  "repo_command_config": {},
+  "repo_execution_notes": [
+    "Repository was provisioned by WSPass.",
+    "Primary component focus: pass-vercel-cdn."
+  ]
+}
