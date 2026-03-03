@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PASS — Policy-Aware Submission System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <div class="nav-logo">PASS / Wealthsimple</div>
+    <ul class="nav-links">
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#system">The System</a></li>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#scale">At Scale</a></li>
+      <li><a href="#human">Human Role</a></li>
+    </ul>
+  </nav>
+
+  <!-- STICKY SIDEBAR — floats as overlay, appears after hero -->
+  <aside id="sidebar" class="sidebar hidden">
+    <ul class="sidebar-nav">
+      <li class="sidebar-sub-head">In this report</li>
+      <li><a href="#problem" class="sidebar-link active">The compliance bottleneck</a></li>
+      <li><a href="#summit" class="sidebar-link">The False Summit</a></li>
+      <li><a href="#system" class="sidebar-link">What is PASS</a></li>
+      <li class="sidebar-sub-head">Architecture</li>
+      <li><a href="#step1" class="sidebar-link">Establish agent primitives</a></li>
+      <li><a href="#step2" class="sidebar-link">Find bottlenecks</a></li>
+      <li><a href="#step3" class="sidebar-link">Scale the factory</a></li>
+      <li><a href="#human" class="sidebar-link">Human boundary</a></li>
+    </ul>
+  </aside>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Wealthsimple AI Builder — Application</div>
+      <h1 class="hero-title"><em>PASS</em><br>Policy-Aware<br>Submission System</h1>
+      <p class="hero-subtitle">Background agents and the next era of financial compliance</p>
+      <div class="hero-cta">
+        <a href="#problem" class="btn-primary">See the system</a>
+        <a href="#human" class="btn-ghost">What stays human →</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>SCROLL DOWN</span>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT WRAPPER (has sidebar offset) -->
+  <div class="content-wrap">
+
+    <!-- SECTION 1: PROBLEM -->
+    <section id="problem" class="content-section">
+      <div class="section-label reveal">THE SELF-DRIVING COMPLIANCE LAYER</div>
+      <h2 class="section-title reveal">
+        Background agents work across<br>the entire compliance lifecycle.
+      </h2>
+      <p class="section-body reveal">
+        Compliance review was designed around constraints of humans reading documents.
+        Now, agents can run autonomously across thousands of submissions in the background.
+        This trend is already in motion. Our old processes can't absorb these changes anymore.
+        Now, every compliance leader is asking the same question:
+        <strong>how do we get from today's manual review process to a self-driving compliance layer?</strong>
+      </p>
+
+      <!-- Interactive SDLC dot pipeline -->
+      <div class="pipeline-viz reveal" id="pipelineViz">
+        <div class="pipeline-labels">
+          <span class="pl" data-stage="0">INTAKE</span>
+          <span class="pl" data-stage="1">PARSE</span>
+          <span class="pl active" data-stage="2">REVIEW</span>
+          <span class="pl" data-stage="3">FLAG</span>
+          <span class="pl" data-stage="4">APPROVE</span>
+        </div>
+        <canvas id="pipelineCanvas"></canvas>
+      </div>
+
+      <p class="section-body reveal">
+        Submissions pile up at Review — not because analysts are slow,
+        but because <strong>review was never designed to be parallelized.</strong>
+        PASS changes that constraint entirely.
+      </p>
+    </section>
+
+    <!-- SECTION: FALSE SUMMIT -->
+    <section id="summit" class="content-section">
+      <div class="section-label reveal">THE FALSE SUMMIT</div>
+      <h2 class="section-title accent reveal">
+        Individual speed ≠ organizational velocity.
+      </h2>
+      <p class="section-body reveal">
+        You rolled out AI copilots for analysts. They read faster. PRs of approvals flood in.
+      </p>
+      <p class="section-body reveal" style="margin-top: 16px;">
+        Yet, queue time doesn't budge. SLAs are flat. The backlog grows.
+      </p>
+      <p class="section-body reveal" style="margin-top: 16px;">
+        Because gains are compounding with the individual, not the organization.
+        The longer you invest in AI-assisted reading without addressing the system around it,
+        the deeper you entrench. <strong>This is the false summit.</strong>
+      </p>
+
+      <!-- Scroll-driven roadmap (mirrors the steps diagram) -->
+      <div class="roadmap reveal" id="roadmap">
+        <div class="roadmap-curve"></div>
+        <div class="roadmap-point false-summit">
+          <div class="rp-dot"></div>
+          <div class="rp-label-top">AGENTS ON ANALYST MACHINES<br><em>The false summit</em></div>
+        </div>
+        <div class="roadmap-point step1" data-step="1">
+          <div class="rp-dot active"></div>
+          <div class="rp-label">Step 01<br><span>Establish background agent primitives</span></div>
+        </div>
+        <div class="roadmap-point step2" data-step="2">
+          <div class="rp-dot"></div>
+          <div class="rp-label">Step 02<br><span>Find your system bottlenecks</span></div>
+        </div>
+        <div class="roadmap-point step3" data-step="3">
+          <div class="rp-dot"></div>
+          <div class="rp-label">Step 03<br><span>Scale your compliance factory</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: WHAT IS PASS -->
+    <section id="system" class="content-section">
+      <div class="section-label reveal">WHAT IS A BACKGROUND AGENT</div>
+      <h2 class="section-title reveal">
+        The answer: agents that review<br>before any human has to.
+        <span class="icon-cluster">⬡ ✳ ✦ ○</span>
+      </h2>
+      <p class="section-body reveal">
+        A copilot needs your analyst's attention. A background agent needs neither.
+        It runs in its own execution environment in the cloud: full document toolchain,
+        policy retrieval suite, everything. Completely decoupled from your team's attention.
+      </p>
+      <p class="section-body reveal" style="margin-top: 20px;">
+        Trigger it from a Slack message, a form submission, a webhook, a scheduled job.
+        Walk away. Review the structured output when it's done.
+        It's an asynchronous task: <strong>delegate, walk away, decide later.</strong>
+      </p>
+
+      <table class="compare-table reveal">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Copilot analyst</th>
+            <th class="th-accent">PASS (Background Agent)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-label">Where it runs</td>
+            <td>One person, one screen</td>
+            <td>Cloud — triggered by any event, parallelized</td>
+          </tr>
+          <tr>
+            <td class="td-label">How triggered</td>
+            <td>Manually assigned</td>
+            <td>Intake events, schedules, Slack, API call — any signal</td>
+          </tr>
+          <tr>
+            <td class="td-label">Scope</td>
+            <td>Single submission</td>
+            <td>Across entire queue, concurrently</td>
+          </tr>
+          <tr>
+            <td class="td-label">Analyst role</td>
+            <td>In the loop — reading, routing, writing</td>
+            <td>On the loop — prompt, walk away, decide output</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 4: ARCHITECTURE / STEPS -->
+    <section id="architecture" class="content-section">
+
+      <!-- STEP 01 -->
+      <div id="step1" class="step-block">
+        <div class="step-header reveal">
+          <div class="step-number">01</div>
+          <div class="step-name">Establish background agent primitives</div>
+        </div>
+        <p class="section-body reveal">
+          Autonomous agents need infrastructure that doesn't exist in a shared drive.
+          The building blocks below are what separate a demo from a deployment —
+          structured document ingestion, policy retrieval, sandboxed execution, audit trail generation.
+          Each one unlocks the next.
+        </p>
+
+        <div class="two-col reveal">
+          <div class="two-col-item">
+            <div class="section-label" style="margin-bottom:12px">PATTERN 1</div>
+            <h3 class="pattern-title"><em>Agent has full document environment</em></h3>
+            <p class="pattern-body">
+              The agent has a full document processing environment. A container running
+              with the policy corpus, test cases, regulatory databases, and internal API access.
+              This is the closest to how a human analyst works.
+              Every enterprise compliance agent worth deploying chose this pattern.
+            </p>
+            <div class="pattern-diagram">
+              <div class="pd-box main">
+                <div class="pd-label">CONTAINER</div>
+                <div class="pd-items">
+                  <span>• Agent</span>
+                  <span>• Policy corpus</span>
+                  <span>• Test suite</span>
+                  <span>• Internal APIs</span>
+                </div>
+              </div>
+              <div class="pd-box side">
+                <div class="pd-items">
+                  <span>• Databases</span>
+                  <span>• Reg feeds</span>
+                  <span>• Secrets</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="two-col-item">
+            <div class="section-label" style="margin-bottom:12px">GOVERNANCE</div>
+            <h3 class="pattern-title">Enforced at runtime, not by prompt</h3>
+            <p class="pattern-body">
+              Agents are actors in your system. They need the same controls as human contributors
+              — identity, permissions, audit trails.
+              Governance enforced by a system prompt ("please don't approve edge cases") is a suggestion.
+              Governance enforced at the execution layer — scoped credentials, deterministic command blocking —
+              is actual governance.
+            </p>
+            <div class="placeholder-box">[ Add governance diagram ]</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 02 -->
+      <div id="step2" class="step-block" style="margin-top: 80px;">
+        <div class="step-header reveal">
+          <div class="step-number">02</div>
+          <div class="step-name">Find your system bottlenecks</div>
+        </div>
+        <p class="section-body reveal">
+          The primitives give you the capability. Where you apply them is what matters.
+          That means doing the work: surveying your analysts, sitting with your teams,
+          mapping where time goes. Every organization's bottlenecks are different.
+          The ones worth solving first aren't always obvious.
+        </p>
+
+        <div class="callout reveal">
+          <h4 class="callout-title">Submissions that pile up faster than any analyst can clear</h4>
+          <p class="callout-body">
+            Standard product submissions sit in queue while analysts context-switch.
+            PASS reviews every submission before a human sees it, so analysts focus
+            on judgment calls — not on reading whether required fields are populated.
+          </p>
+        </div>
+
+        <div class="callout reveal" style="margin-top: 20px;">
+          <h4 class="callout-title">[ Your second bottleneck here ]</h4>
+          <p class="callout-body">
+            Describe another specific compliance workflow PASS addresses —
+            exception flagging, policy change propagation, audit documentation, regulatory response.
+          </p>
+        </div>
+      </div>
+
+      <!-- STEP 03 -->
+      <div id="step3" class="step-block" style="margin-top: 80px;">
+        <div class="step-header reveal">
+          <div class="step-number">03</div>
+          <div class="step-name">Scale your compliance factory</div>
+        </div>
+        <p class="section-body reveal">
+          The compliance organization is an industrial system. Today, analysts stand at every station:
+          reading, routing, flagging, writing. Background agents change the operating model.
+          The factory runs, but your analysts move <em>on</em> the loop instead of <em>in</em> it.
+        </p>
+
+        <!-- Interactive flow diagram -->
+        <div class="flow-diagram reveal" id="flowDiagram">
+          <div class="flow-stage" data-stage="intake">
+            <div class="flow-stage-label">INTAKE</div>
+            <div class="flow-dots-wrap">
+              <div class="fd grey"></div><div class="fd grey"></div><div class="fd grey"></div>
+            </div>
+          </div>
+          <div class="flow-stage" data-stage="parse">
+            <div class="flow-stage-label">PARSE</div>
+            <div class="flow-dots-wrap">
+              <div class="fd red"></div><div class="fd red"></div><div class="fd grey"></div>
+            </div>
+          </div>
+          <div class="flow-stage" data-stage="review">
+            <div class="flow-stage-label">AI REVIEW</div>
+            <div class="flow-dots-wrap">
+              <div class="fd red"></div><div class="fd red"></div><div class="fd red"></div>
+              <div class="fd red"></div><div class="fd red"></div><div class="fd red"></div>
+            </div>
+          </div>
+          <div class="flow-stage" data-stage="human">
+            <div class="flow-stage-label">HUMAN DECISION</div>
+            <div class="flow-dots-wrap">
+              <div class="fd green large"></div>
+            </div>
+          </div>
+          <div class="flow-stage" data-stage="approve">
+            <div class="flow-stage-label">APPROVE</div>
+            <div class="flow-dots-wrap">
+              <div class="fd green"></div><div class="fd green"></div>
+            </div>
+          </div>
+        </div>
+
+        <ul class="check-list reveal">
+          <li>Every submission is reviewed by PASS before a human sees it</li>
+          <li>Policy citations are generated automatically — analysts don't look them up</li>
+          <li>Exception flags surface immediately, not after full document read</li>
+          <li>Audit trail is written by the agent, verified by the analyst</li>
+          <li>[ Add your 5th outcome — your specific metric or result ]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DARK SECTION -->
+    <section id="scale" class="content-section section-dark">
+      <div class="content-section-inner">
+        <div class="section-label reveal" style="color: #c0392b;">TOWARDS A SELF-DRIVING COMPLIANCE LAYER</div>
+        <blockquote class="dark-quote reveal">
+          Your analysts aren't in the queue.<br>
+          They're <em>on</em> the queue.
+        </blockquote>
+        <p class="section-body reveal" style="color: #8a8480; margin-top: 32px;">
+          The intake pipeline runs. Submissions are being parsed, reviewed, flagged —
+          continuously, autonomously. Analysts are observing. Setting thresholds.
+          Verifying outcomes. Making the calls only they can make.
+        </p>
+        <p class="section-body reveal" style="color: #8a8480; margin-top: 20px;">
+          <strong style="color: #e8e4de;">[ Add your scale metrics ]</strong> —
+          projected throughput increase, SLA reduction, analyst hours saved per week.
+        </p>
+        <div class="placeholder-box dark reveal" style="margin-top: 48px; height: 320px;">
+          [ Demo screenshot or system diagram ]
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: HUMAN ROLE -->
+    <section id="human" class="content-section">
+      <div class="section-label reveal">WHERE AI MUST STOP</div>
+      <h2 class="section-title reveal">
+        One decision must<br>remain human — and why.
+      </h2>
+      <p class="section-body reveal">
+        PASS takes on real cognitive responsibility: parsing, retrieval, initial analysis,
+        exception flagging, audit documentation. But the architecture is explicit about
+        where AI authority terminates.
+      </p>
+
+      <div class="human-decision reveal">
+        <div class="human-decision-label">Critical Human Decision</div>
+        <h3 class="human-decision-title">Final regulatory approval on novel product types</h3>
+        <p class="human-decision-body">
+          PASS can review a submission against known policy. It cannot determine whether
+          a genuinely novel financial product is <em>appropriate</em> for Wealthsimple's
+          regulatory posture, client base, and risk appetite. That judgment requires
+          institutional knowledge, stakeholder accountability, and regulatory relationship context
+          that no agent should hold. The analyst signs. The agent doesn't.
+        </p>
+        <p class="human-decision-note">
+          [ Customize with your specific human decision boundary ]
+        </p>
+      </div>
+
+      <p class="section-body reveal" style="margin-top: 40px;">
+        <strong>What would break first at scale:</strong> policy drift — when the policy corpus
+        gets out of sync with live regulatory updates. PASS is only as good as its retrieval layer.
+        That maintenance responsibility is explicitly human.
+      </p>
+
+      <div class="placeholder-box reveal" style="margin-top: 48px; height: 280px;">
+        [ Add demo screenshot or video thumbnail here ]
+      </div>
+    </section>
+
+  </div><!-- end content-wrap -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-note">
+      Nobody can fully predict the endgame of AI-native compliance.
+      But we do know the old system wasn't built for 3 million users.
+      PASS is a start.
+    </p>
+    <div class="footer-credit">Built for Wealthsimple AI Builder application - March 2026 - Matteo T. Kashawn B.</div>
+  </footer>
+
+  <script src="js/hero.js"></script>
+  <script src="js/pipeline.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/sidebar.js"></script>
+</body>
+</html>
