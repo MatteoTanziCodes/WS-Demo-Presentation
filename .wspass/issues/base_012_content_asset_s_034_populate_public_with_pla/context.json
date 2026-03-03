@@ -1,0 +1,74 @@
+{
+  "generated_at": "2026-03-03T04:18:25.926Z",
+  "issue_id": "base_012_content_asset_s_034_populate_public_with_pla",
+  "issue_number": 34,
+  "title": "Populate /public with placeholder photo and animation assets",
+  "summary": "Add placeholder photo images (WebP/PNG) and lightweight CSS/JS animation stubs into /public, organized by sectionId subdirectories. Ensure total size stays well under the 500 MB budget. Each section references at least one photo asset matching the PhotoAsset entity shape.",
+  "acceptance_criteria": [
+    "/public contains per-section subdirectories each with at least one placeholder image",
+    "All placeholder images are valid WebP or PNG files",
+    "Total /public size is under 10 MB",
+    "Asset filenames align with PhotoAsset entity naming (sectionId-based)"
+  ],
+  "dependencies": [
+    "base_012_content_asset_s_033_create_content_mdx_json_"
+  ],
+  "related_components": [
+    "pass-web"
+  ],
+  "related_requirements": [
+    {
+      "id": "req_1",
+      "text": "All slide content sourced from local JSON/MDX at build time with zero server-side runtime."
+    },
+    {
+      "id": "req_2",
+      "text": "The build pipeline reads all slide data from /content at build time and bakes it into the static bundle."
+    },
+    {
+      "id": "req_3",
+      "text": "A client-side state machine manages the current slide index, updates the URL hash, and responds to keyboard arrow key events."
+    },
+    {
+      "id": "req_4",
+      "text": "Demo slide video elements auto-load from /public; the presenter can play, pause, and resume without leaving the slide."
+    },
+    {
+      "id": "req_5",
+      "text": "Vercel project is configured with build command `next build && next export` and output directory `out`; the generated Vercel URL must be publicly accessible."
+    },
+    {
+      "id": "req_6",
+      "text": "The Next.js project must be bootstrapped and maintained in TypeScript with strict mode enabled."
+    },
+    {
+      "id": "req_7",
+      "text": "Sections must include: personal intro, AI overview (neural net → AI building → unattended agentic AI), prod-ready agent architecture, legacy vs reimagined workflow demo, maintenance/cost/audit considerations, Stripe Minions and Ramp examples, and agentic DevOps differentiator with uptime metric."
+    },
+    {
+      "id": "req_8",
+      "text": "Typing or sharing a hash URL (e.g. #qa) must navigate the client-side state machine to the target slide without reloading the page."
+    },
+    {
+      "id": "req_9",
+      "text": "A pre-build or CI check measures total size of /public and aborts the build with a clear error if the limit is exceeded."
+    },
+    {
+      "id": "req_10",
+      "text": "Each slide fills the full viewport; no vertical or horizontal scrollbars appear during a standard presentation session."
+    }
+  ],
+  "related_integrations": [
+    "Vercel CDN Edge",
+    "Next.js Static Export",
+    "MDX Compiler (next-mdx-remote / @next/mdx)",
+    "CI Asset Size Check",
+    "Browser Hash Router"
+  ],
+  "relevant_design_guidance": [],
+  "repo_command_config": {},
+  "repo_execution_notes": [
+    "Repository was provisioned by WSPass.",
+    "Primary component focus: pass-web."
+  ]
+}
